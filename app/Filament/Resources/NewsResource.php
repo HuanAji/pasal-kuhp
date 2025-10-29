@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\NewsCategoryResource\Pages;
-use App\Filament\Resources\NewsCategoryResource\RelationManagers;
-use App\Models\NewsCategory;
+use App\Filament\Resources\NewsResource\Pages;
+use App\Filament\Resources\NewsResource\RelationManagers;
+use App\Models\News;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,22 +15,17 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Set;
 use illuminate\Support\Str;
 
-class NewsCategoryResource extends Resource
+class NewsResource extends Resource
 {
-    protected static ?string $model = NewsCategory::class;
+    protected static ?string $model = News::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                forms\Components\TextInput::make('title')
-                    ->live(onBlur: true)
-                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))    
-                ->required(),
-                forms\Components\TextInput::make('slug')
-                    ->required(),
+
             ]);
     }
 
@@ -38,16 +33,13 @@ class NewsCategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('slug'),
+                //
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -66,9 +58,9 @@ class NewsCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListNewsCategories::route('/'),
-            'create' => Pages\CreateNewsCategory::route('/create'),
-            'edit' => Pages\EditNewsCategory::route('/{record}/edit'),
+            'index' => Pages\ListNews::route('/'),
+            'create' => Pages\CreateNews::route('/create'),
+            'edit' => Pages\EditNews::route('/{record}/edit'),
         ];
     }
 }
