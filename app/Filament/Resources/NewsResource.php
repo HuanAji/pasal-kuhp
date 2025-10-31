@@ -25,6 +25,25 @@ class NewsResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('author_id')
+                    ->relationship('author', 'name')
+                    ->required(),
+                Forms\Components\Select::make('news_category_id')
+                    ->relationship('newsCategory', 'title')
+                    ->required(),
+                forms\Components\TextInput::make('title')
+                    ->live(onBlur: true)
+                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))    
+                ->required(),
+                forms\Components\TextInput::make('slug')
+                    ->readOnly(),
+                forms\Components\FileUpload::make('thumbnail')
+                    ->image()
+                    ->required()
+                    ->columnSpanFull(),
+                forms\Components\RichEditor::make('content')
+                    ->required()
+                    ->columnSpanFull(),
 
             ]);
     }
@@ -33,13 +52,24 @@ class NewsResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('author.name')->label('Author'),
+                Tables\Columns\TextColumn::make('newsCategory.title')->label('Category'),
+                Tables\Columns\TextColumn::make('title')->limit(35),
+                Tables\Columns\TextColumn::make('slug')->limit(35),
+                Tables\Columns\ImageColumn::make('thumbnail'),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('author_id')
+                    ->relationship('author', 'name')
+                    ->label('Select Author'),
+                Tables\Filters\SelectFilter::make('news_category_id')
+                    ->relationship('newsCategory', 'title')
+                    ->label('Select Category'),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
