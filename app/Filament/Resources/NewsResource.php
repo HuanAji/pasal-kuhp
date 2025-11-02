@@ -44,6 +44,7 @@ class NewsResource extends Resource
                 forms\Components\RichEditor::make('content')
                     ->required()
                     ->columnSpanFull(),
+                forms\Components\Toggle::make('is_featured')
 
             ]);
     }
@@ -57,6 +58,7 @@ class NewsResource extends Resource
                 Tables\Columns\TextColumn::make('title')->limit(35),
                 Tables\Columns\TextColumn::make('slug')->limit(35),
                 Tables\Columns\ImageColumn::make('thumbnail'),
+                Tables\Columns\ToggleColumn::make('is_featured'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('author_id')
