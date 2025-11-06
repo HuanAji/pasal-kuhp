@@ -8,7 +8,7 @@
       <div class="swiper-wrapper">
         @foreach ($banners as $banner)
           <div class="swiper-slide">
-            <a href="detail-MotoGp.html" class="block">
+            <a href="{{ route('news.show', $banner->news->slug) }}" class="block">
               <div
                 class="relative flex flex-col gap-1 justify-end p-3 h-72 rounded-xl bg-cover bg-center overflow-hidden" style="background-image: url('{{ asset('storage/' . $banner->news->thumbnail) }}');">
                 <div
