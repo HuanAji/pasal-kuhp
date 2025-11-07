@@ -115,7 +115,7 @@
         <!-- Author 1 -->
         @foreach ($authors as $author)
           <a href="{{ route('author.show', $author->username) }}">
-              <div
+              <div  
                 class="flex flex-col items-center border border-slate-200 px-4 py-8 rounded-2xl hover:border-primary hover:cursor-pointer">
                 <img src="{{ asset('storage/' . $author->avatar) }}" alt="" class="rounded-full w-24 h-24">
                 <p class="font-bold text-xl mt-4">{{ $author->name }}</p>
