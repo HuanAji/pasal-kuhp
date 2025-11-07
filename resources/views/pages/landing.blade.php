@@ -43,7 +43,7 @@
       </div>
       <div class="grid sm:grid-cols-1 gap-5 lg:grid-cols-4">
         @foreach ($featureds as $featured)
-          <a href="{{ route('news.show', $featured->$slug) }}">
+          <a href="{{ route('news.show', $featured-> slug) }}">
             <div class="border border-slate-200 p-3 rounded-xl hover:border-primary hover:cursor-pointer transition duration-300 ease-in-out" style="height:100%">
               <div class="bg-primary text-white rounded-full w-fit px-5 py-1 font-normal ml-2 mt-2 text-sm absolute">
                 {{ $featured->newsCategory->title }}
@@ -114,7 +114,7 @@
       <div class="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         <!-- Author 1 -->
         @foreach ($authors as $author)
-          <a href="author.html">
+          <a href="{{ route('author.show', $author->username) }}">
               <div
                 class="flex flex-col items-center border border-slate-200 px-4 py-8 rounded-2xl hover:border-primary hover:cursor-pointer">
                 <img src="{{ asset('storage/' . $author->avatar) }}" alt="" class="rounded-full w-24 h-24">
