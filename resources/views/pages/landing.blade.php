@@ -43,7 +43,7 @@
       </div>
       <div class="grid sm:grid-cols-1 gap-5 lg:grid-cols-4">
         @foreach ($featureds as $featured)
-          <a href="detail-MotoGp.html">
+          <a href="{{ route('news.show', $featured->$slug) }}">
             <div class="border border-slate-200 p-3 rounded-xl hover:border-primary hover:cursor-pointer transition duration-300 ease-in-out" style="height:100%">
               <div class="bg-primary text-white rounded-full w-fit px-5 py-1 font-normal ml-2 mt-2 text-sm absolute">
                 {{ $featured->newsCategory->title }}
@@ -68,7 +68,7 @@
         <!-- Berita Utama -->
         <div
           class="relative col-span-7 lg:row-span-3 border border-slate-200 p-3 rounded-xl hover:border-primary hover:cursor-pointer">
-          <a href="detail-MotoGp.html">
+          <a href="{{ route('news.show', $news[0]->slug) }}">
             <div class="bg-primary text-white rounded-full w-fit px-4 py-1 font-normal ml-5 mt-5 absolute">{{ $news[0]->newsCategory->title }}
             </div>
             <img src="{{ asset('storage/' . $news[0]->thumbnail) }}" alt="berita1" class="rounded-2xl">
@@ -84,7 +84,7 @@
 
         <!-- Berita 1 -->
         @foreach ($news->skip(1) as $new)
-            <a href="detail-MotoGp.html"
+            <a href="{{ route('news.show', $new->slug) }}"
               class="relative col-span-5 flex flex-col h-fit md:flex-row gap-3 border border-slate-200 p-3 rounded-xl hover:border-primary hover:cursor-pointer">
               <div class="bg-primary text-white rounded-full w-fit px-4 py-1 font-normal ml-2 mt-2 absolute text-sm">
                 {{ $new->newsCategory->title }}
@@ -136,7 +136,7 @@
       </div>
       <div class="grid sm:grid-cols-1 gap-5 lg:grid-cols-4">
         @foreach ($news as $choice)
-          <a href="detail-MotoGp.html">
+          <a href="{{ route('news.show', $choice->slug) }}">
           <div
             class="border border-slate-200 p-3 rounded-xl hover:border-primary hover:cursor-pointer transition duration-300 ease-in-out" style="height: 100%">
             <div class="bg-primary text-white rounded-full w-fit px-5 py-1 font-normal ml-2 mt-2 text-sm absolute">
