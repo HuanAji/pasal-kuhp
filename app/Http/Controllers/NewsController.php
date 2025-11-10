@@ -14,4 +14,9 @@ class NewsController extends Controller
 
         return view('pages.news.show', compact('news', 'newest'));
     }
+
+    public function category($slug)
+    {
+        $category = News::where('category_slug', $slug)->first(); 
+    }
 }
