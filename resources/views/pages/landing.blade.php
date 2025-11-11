@@ -49,7 +49,7 @@
                 {{ $featured->newsCategory->title }}
               </div>
               <img src="{{ asset('storage/' . $featured->thumbnail) }}" alt="" class="w-full rounded-xl mb-3" style="height: 150px; object-fit: cover;">
-              <p class="font-bold text-base mb-1">{{ $featured->title }}</p>
+              <p class="font-bold text-base mb-1">{{ \Str::limit($featured->title, 50) }} </p>
               <p class="text-slate-400">{{ \Carbon\Carbon::parse($featured->created_at)->format('d F Y') }}</p>
             </div>
           </a>
@@ -78,7 +78,7 @@
             <p class="text-slate-400 text-base mt-1">
               {!! \Str::limit($news[0]->content, 10) !!}
             </p>
-            <p class="text-slate-400 text-base mt-1">23 Januari 2024</p>
+            <p class="text-slate-400 text-base mt-1">{{ \Carbon\Carbon::parse($news[0]->created_at)->format('d F Y') }}</p>
           </a>
         </div>
 
