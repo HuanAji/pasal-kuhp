@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\NewsCategory;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -17,6 +18,8 @@ class NewsController extends Controller
 
     public function category($slug)
     {
-        $category = News::where('category_slug', $slug)->first(); 
+        $category = NewsCategory::where('slug', $slug)->first();
+
+        return view('pages.news.category', compact('category'));
     }
 }
