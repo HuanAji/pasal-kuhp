@@ -11,9 +11,9 @@ class NewsController extends Controller
     public function show($slug)
     {
         $news = News::where('slug', $slug)->first();
-        $newest = News::orderBy('created_at', 'desc')->take(5)->get();
+        $newests = News::orderBy('created_at', 'desc')->take(5)->get();
 
-        return view('pages.news.show', compact('news', 'newest'));
+        return view('pages.news.show', compact('news', 'newests'));
     }
 
     public function category($slug)
