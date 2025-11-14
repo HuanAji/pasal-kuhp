@@ -23,7 +23,8 @@
             </div>
           </a>
         @endforeach
-       
       </div>
+
+      {{ $news->links('vendor.pagination.custom') }}
     </div>
 @endsection
