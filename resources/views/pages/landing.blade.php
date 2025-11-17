@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Moco | Baca Berita Terbaru')
+@section('title', 'PasalKUHP | Updated Pasal KUHP Indonesia')
 
 @section('content')
       <!-- swiper -->
