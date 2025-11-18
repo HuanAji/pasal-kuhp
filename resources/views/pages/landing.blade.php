@@ -107,9 +107,6 @@
           <p>Kenali Author</p>
           <p>Terbaik Dari Kami</p>
         </div>
-        <a href="register.html" class="bg-primary px-5 py-2 rounded-full text-white font-semibold mt-4 md:mt-0 h-fit">
-          Gabung Menjadi Author
-        </a>
       </div>
       <div class="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         <!-- Author 1 -->
