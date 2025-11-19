@@ -7,7 +7,11 @@
           <a href="{{ route('landing') }}" class="flex items-center gap-2">
             <div class="flex items-center gap-2">
               <img src={{ asset('assets/img/Logo.png') }} alt="Logo" class="w-8 lg:w-10">
-              <p class="text-lg lg:text-xl font-bold">Pasal KUHP</p>
+              <p class="text-lg lg:text-xl font-bold">
+                <span class="text-black">Pasal</span>
+                <span class="text-primary">KUHP</span>
+              </p>
+
             </div>
           </a>
           <button class="lg:hidden text-primary text-2xl focus:outline-none" id="menu-toggle">
