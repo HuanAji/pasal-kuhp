@@ -29,6 +29,11 @@
       </div>
     </div>
 
+    {{-- Pasal KUHP section --}}
+    <div class="div">
+      <p>Ini adalah Section Pasal KUHP</p>
+    </div>
+
     <!-- Berita Unggulan -->
     <div class="flex flex-col px-14 mt-10 ">
       <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
