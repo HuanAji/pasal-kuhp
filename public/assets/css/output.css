@@ -1426,3 +1426,103 @@ video {
         line-height: 1rem;
     }
 }
+
+/* Footer Styles */
+.kuhp-footer {
+    font-family: Arial, sans-serif;
+    color: #981b1b;
+    padding: 20px 40px;
+    background-color: #b93030;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+}
+
+.footer-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 300px;
+    margin-right: 40px;
+}
+
+.footer-right {
+    flex: 2;
+    min-width: 300px;
+}
+
+.footer-title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.footer-description p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: justify;
+    color: #ffffff;
+}
+
+.footer-description strong {
+    color: #010101;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .kuhp-footer {
+        padding: 20px;
+    }
+
+    .footer-main {
+        flex-direction: column;
+    }
+
+    .footer-left {
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+}
