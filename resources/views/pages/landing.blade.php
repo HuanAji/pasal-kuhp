@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
+
 @section('title', 'PasalKUHP | Updated Pasal KUHP Indonesia')
 
 @section('content')
+<div class="min-h-screen" style="background: linear-gradient(180deg, #c44646 0%, #e8c4a0 40%, #8b6b7e 100%);">
       <!-- swiper -->
     <div class="swiper mySwiper mt-9">
       <div class="swiper-wrapper">
@@ -31,184 +33,133 @@
     <!-- End Swiper -->
 
     <!--Pasal KUHP Section-->
-    <div class="flex flex-col px-4 sm:px-6 md:px-10 lg:px-14 mt-10 mb-10">
-    <div class="flex flex-col lg:flex-row gap-6">
-        
-        <!-- Main Content - Pasal -->
-        <div class="flex-1 lg:w-2/3">
-            <!-- Header dengan Search -->
-            <div class="bg-red-700 text-white p-4 rounded-t-lg">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-sm font-medium">Pasal 1</span>
-                </div>
-                <div class="relative">
-                    <input
-                        type="text"
-                        id="searchPasal"
-                        placeholder="Pasal 565..."
-                        class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-400"
-                    />
-                    <svg class="absolute right-3 top-2.5 text-gray-400 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </div>
+      <section class="pt-12 pb-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="flex items-center justify-center gap-3">
+            <img src="{{ asset('assets/img/Logo.png') }}" class="w-8 h-8 object-contain">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Daftar Isi Pasal Hukum</h1>
+          </div>
+          <p class="text-sm text-white/90 mt-3">
+            Telusuri pasal-pasal hukum Indonesia secara mudah, cepat, dan terstruktur.
+          </p>
+
+          <!-- Tag pills + search -->
+          <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div class="flex flex-wrap gap-3 justify-center">
+              <button class="px-4 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">Hukum Pidana</button>
+              <button class="px-4 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">Hukum Perdata</button>
+              <button class="px-4 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">Pasal Umum & Ketentuan Dasar</button>
+              <button class="px-4 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">Pasal Tj Coba</button>
             </div>
 
-            <!-- Content Box -->
-            <div class="bg-white border-2 border-gray-200 rounded-b-lg shadow-lg">
-                
-                <!-- Loading State (Hide after loaded) -->
-                <div id="loadingState" class="p-6 sm:p-8 text-center">
-                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-red-700 mb-3"></div>
-                    <p class="text-gray-600">Seianggannya...</p>
-                </div>
-
-                <!-- Pasal Content -->
-                <div id="pasalContent" class="hidden">
-                    <!-- Pasal Number Badge -->
-                    <div class="px-6 sm:px-8 pt-6">
-                        <div class="bg-red-700 text-white inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium mb-6">
-                            <span class="mr-2">▲</span>
-                            Pasal {{ $pasal->nomor ?? '565' }}
-                        </div>
-                    </div>
-
-                    <!-- Content Area -->
-                    <div class="px-6 sm:px-8 pb-8">
-                        <!-- Status Badge -->
-                        <div class="flex items-center mb-6">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                                Berlaku
-                            </span>
-                        </div>
-
-                        <!-- Judul Buku/Aturan -->
-                        <div class="mb-6">
-                            <h3 class="text-lg sm:text-xl font-bold text-center mb-2">
-                                {{ $pasal->buku ?? 'Buku Kesatu_ Aturan Umum' }}
-                            </h3>
-                        </div>
-
-                        <!-- Bab -->
-                        <div class="mb-6">
-                            <h4 class="text-base sm:text-lg font-semibold text-center leading-relaxed">
-                                {{ $pasal->bab ?? 'Bab 1 - Batas-Batas Berlakunya Aturan Pidana Dalam Perundang-undangan' }}
-                            </h4>
-                        </div>
-
-                        <!-- Isi Pasal -->
-                        <div class="text-gray-800 leading-relaxed text-justify text-sm sm:text-base space-y-4">
-                            {!! nl2br(e($pasal->isi ?? '')) !!}
-                            
-                            @if(isset($pasal->ayat) && count($pasal->ayat) > 0)
-                                @foreach($pasal->ayat as $ayat)
-                                    <div class="mt-4">
-                                        <p class="font-semibold mb-2">Ayat {{ $ayat->nomor }}</p>
-                                        <p>{{ $ayat->isi }}</p>
-                                    </div>
-                                @endforeach
-                            @endif
-                        </div>
-
-                        <!-- Additional Info (Optional) -->
-                        @if(isset($pasal->penjelasan))
-                        <div class="mt-6 p-4 bg-gray-50 rounded-lg">
-                            <h5 class="font-semibold mb-2 text-gray-700">Penjelasan:</h5>
-                            <p class="text-sm text-gray-600 leading-relaxed">{{ $pasal->penjelasan }}</p>
-                        </div>
-                        @endif
-                    </div>
-                </div>
+            <div class="hidden lg:flex items-center gap-3">
+              <div class="relative">
+                <form action="{{ route('news.index') }}" method="GET">
+                  <input
+                    type="text"
+                    name="search"
+                    value="{{ request('search') }}"
+                    placeholder="Pasal..."
+                    class="border border-slate-300 rounded-full px-4 py-2 pl-8 text-sm focus:outline-none focus:ring-primary focus:border-primary"
+                  />
+                </form>
+              </div>
             </div>
+
+        <!-- Content card -->
+        <div class="max-w-xl mx-auto mt-10 px-2 sm:px-6">
+          <div class="bg-white rounded-2xl shadow-xl p-6">
+
+            <!-- Title -->
+            <h2 class="text-4xl font-extrabold text-gray-900">Pasal 565</h2>
+            <p class="text-gray-500 mt-1">Pasal Kejahatan</p>
+
+            <!-- Big Pasal Card (Matches Image) -->
+            <div class="mt-8 border-2 border-red-700 rounded-xl relative px-4 py-6">
+
+              <!-- Label Pasal 6 -->
+              <div class="absolute -top-4 left-4 bg-red-700 text-white px-4 py-1 rounded-full font-semibold shadow">
+                Pasal 6
+              </div>
+
+              <!-- Status -->
+              <div class="flex items-center gap-2 mt-2 mb-4">
+                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                <p class="text-sm font-semibold">Berlaku</p>
+              </div>
+
+              <!-- Centered Title Section -->
+              <div class="text-center font-semibold mb-4">
+                Buku Kesatu _ Aturan Umum <br>
+                Bab 1 - Batas-Batas<br>
+                Berlakunya Aturan Pidana<br>
+                Dalam Perundang-undangan
+              </div>
+
+              <!-- Content -->
+              <p class="text-sm leading-relaxed text-gray-700">
+                Perumusan limitatif yang terbuka ini dimaksudkan untuk memberikan fleksibilitas praktik dan 
+                dalam perkembangan formulasi Tindak Pidana oleh pembentuk Undang-Undang pada masa yang akan 
+                datang. Fleksibilitas itu tetap dalam batas kepastian menurut ketentuan peraturan perundang-undangan...
+              </p>
+            </div>
+
+            <!-- Collapsible list === MENU PASAL -->
+            <div class="mt-8 space-y-4">
+
+              <!-- PASAL 1 -->
+              <div x-data="{open:false}" class="border border-red-700 rounded-xl overflow-hidden">
+                <button 
+                  @click="open=!open" 
+                  class="w-full flex justify-between items-center bg-red-700 text-white px-4 py-2 font-semibold"
+                >
+                  Pasal 1
+                  <span x-text="open ? '▲' : '▼'" class="text-xs"></span>
+                </button>
+
+                <div x-show="open" x-collapse class="bg-white px-4 py-3 text-sm text-gray-700">
+                  Isi pasal 1 ditampilkan di sini...
+                </div>
+              </div>
+
+              <!-- PASAL 2 -->
+              <div x-data="{open:false}" class="border border-red-700 rounded-xl overflow-hidden">
+                <button 
+                  @click="open=!open" 
+                  class="w-full flex justify-between items-center bg-red-700 text-white px-4 py-2 font-semibold"
+                >
+                  Pasal 2
+                  <span x-text="open ? '▲' : '▼'" class="text-xs"></span>
+                </button>
+
+                <div x-show="open" x-collapse class="bg-white px-4 py-3 text-sm text-gray-700">
+                  Isi pasal 2 ditampilkan di sini...
+                </div>
+              </div>
+
+              <!-- PASAL 3 -->
+              <div x-data="{open:false}" class="border border-red-700 rounded-xl overflow-hidden">
+                <button 
+                  @click="open=!open" 
+                  class="w-full flex justify-between items-center bg-red-700 text-white px-4 py-2 font-semibold"
+                >
+                  Pasal 3
+                  <span x-text="open ? '▲' : '▼'" class="text-xs"></span>
+                </button>
+
+                <div x-show="open" x-collapse class="bg-white px-4 py-3 text-sm text-gray-700">
+                  Isi pasal 3 ditampilkan di sini...
+                </div>
+              </div>
+
+            </div>
+
+          </div>
         </div>
 
-        <!-- Sidebar - Berita Terbaru -->
-        <div class="lg:w-1/3">
-            <div class="bg-white rounded-lg shadow-lg border border-gray-200 sticky top-4">
-                <!-- Header Berita -->
-                <div class="bg-red-700 text-white px-6 py-4 rounded-t-lg">
-                    <div class="flex items-center">
-                        <span class="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
-                        <h3 class="font-bold text-lg">Berita Terbaru</h3>
-                    </div>
-                </div>
+      </section>
+    <!-- End Pasal KUHP Section-->
 
-                <!-- List Berita -->
-                <div class="divide-y divide-gray-200">
-                    @forelse($beritaTerbaru ?? [] as $berita)
-                    <a href="{{ route('berita.show', $berita->id) }}" class="block p-4 hover:bg-gray-50 transition duration-200">
-                        <div class="flex items-center mb-3">
-                            <span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
-                            <span class="text-xs text-gray-500">Berita Terbaru</span>
-                        </div>
-                        
-                        <!-- Gambar Berita -->
-                        <div class="mb-3 rounded-lg overflow-hidden">
-                            <img 
-                                src="{{ $berita->gambar ? asset('storage/' . $berita->gambar) : 'https://via.placeholder.com/400x250' }}" 
-                                alt="{{ $berita->judul }}"
-                                class="w-full h-48 object-cover hover:scale-105 transition duration-300"
-                            />
-                        </div>
-
-                        <!-- Judul Berita -->
-                        <h4 class="font-semibold text-gray-800 mb-2 line-clamp-2 hover:text-red-700 transition">
-                            {{ $berita->judul }}
-                        </h4>
-
-                        <!-- Waktu -->
-                        <div class="flex items-center text-xs text-gray-500">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            {{ $berita->created_at->diffForHumans() }}
-                        </div>
-                    </a>
-                    @empty
-                    <div class="p-6 text-center text-gray-500">
-                        <p>Belum ada berita terbaru</p>
-                    </div>
-                    @endforelse
-                </div>
-
-                <!-- Link Lihat Semua -->
-                @if(isset($beritaTerbaru) && count($beritaTerbaru) > 0)
-                <div class="p-4 bg-gray-50 rounded-b-lg">
-                    <a href="{{ route('berita.index') }}" class="block text-center text-red-700 font-semibold hover:text-red-800 transition">
-                        Lihat Semua Berita →
-                    </a>
-                </div>
-                @endif
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Simulate loading
-    setTimeout(() => {
-        document.getElementById('loadingState').classList.add('hidden');
-        document.getElementById('pasalContent').classList.remove('hidden');
-    }, 1000);
-
-    // Search functionality (optional)
-    document.getElementById('searchPasal').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            const searchValue = this.value;
-            window.location.href = `/pasal/search?q=${searchValue}`;
-        }
-    });
-</script>
-
-<style>
-    .line-clamp-2 {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-</style>
 
 
     <!-- Berita Unggulan -->
@@ -333,4 +284,6 @@
       </div>
     </div>
     <!-- End Pilihan Author -->
+
+</div>
 @endsection
