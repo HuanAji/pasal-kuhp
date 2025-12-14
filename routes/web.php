@@ -3,9 +3,12 @@
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\NewsController;
+use App\Models\Banner;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+// (debug routes removed)
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/category/{slug}', [NewsController::class, 'category'])->name('news.category');
