@@ -1,4 +1,4 @@
-<footer class="kuhp-footer">
+<footer class="kuhp-footer mt-12">
     <div class="footer-container">
         <!-- Bagian utama footer -->
         <div class="footer-main">
@@ -11,10 +11,10 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Do not sell my personal info</a>
-                    <a href="#" class="footer-link">Terms of Service</a>
-                    <a href="#" class="footer-link">Portalkuhp.com Site Map</a>
+                    <a class="footer-link">Privacy Policy</a>
+                    <a class="footer-link">Do not sell my personal info</a>
+                    <a class="footer-link">Terms of Service</a>
+                    <a class="footer-link">Portalkuhp.com Site Map</a>
                 </div>
             </div>
             
