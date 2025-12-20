@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('news_category_id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('tumbnail');
+            $table->string('thumbnail');
             $table->text('content');
             $table->timestamps();
         });
