@@ -15,3 +15,4 @@ Route::get('/news/category/{slug}', [NewsController::class, 'category'])->name('
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/author/{username}', [AuthorController::class, 'show'])->name('author.show');
+
