@@ -5,133 +5,97 @@
 
 @section('content')
 <div class="min-h-screen" style="background: linear-gradient(180deg, #c44646 0%, #e8c4a0 40%, #6c5463 100%);">
-    <!--Pasal KUHP Section-->
-      <section class="pt-12 pb-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <div class="flex items-center justify-center gap-3">
-            <img src="{{ asset('assets/img/Logo.png') }}" class="w-8 h-8 object-contain">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Daftar Isi Pasal Hukum</h1>
+    <!-- PASAL KUHP SECTION -->
+      <section class="pasal-section">
+
+        <!-- HEADER -->
+        <div class="pasal-header">
+          <div class="pasal-title-wrap">
+            <img src="{{ asset('assets/img/Logo.png') }}" class="pasal-logo">
+            <h1>Daftar Isi Pasal Hukum</h1>
           </div>
-          <p class="text-sm text-white/90 mt-3">
-            Telusuri pasal-pasal hukum Indonesia secara mudah, cepat, dan terstruktur.
-          </p>
+          <p>Telusuri pasal-pasal hukum Indonesia secara mudah, cepat, dan terstruktur.</p>
 
-          <!-- Tag pills + search -->
-          <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div class="flex flex-wrap gap-3 justify-center">
-              <button class="px-4 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">Hukum Pidana</button>
-              <button class="px-4 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">Hukum Perdata</button>
-              <button class="px-4 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">Pasal Umum & Ketentuan Dasar</button>
-              <button class="px-4 py-1 rounded-full bg-white/10 text-white text-sm border border-white/20">Pasal Tj Coba</button>
+          <!-- FILTER -->
+          <div class="pasal-filters">
+            <button class="pasal-pill active">Hukum Pidana</button>
+            <button class="pasal-pill">Hukum Perdata</button>
+            <button class="pasal-pill">Ketentuan Umum</button>
+            <button class="pasal-pill">Percobaan</button>
+          </div>
+
+          <!-- SEARCH -->
+          <form class="pasal-search">
+            <input type="text" placeholder="Cari pasal (contoh: Pasal 565)">
+          </form>
+        </div>
+
+        <!-- PASAL CARD -->
+        <div class="pasal-card">
+
+          <h2>Pasal 565</h2>
+          <span class="subtitle">Pasal Kejahatan</span>
+
+          <!-- PASAL UTAMA -->
+          <div class="pasal-main-box">
+            <span class="label">Pasal 6</span>
+
+            <div class="pasal-status">
+              <span class="dot"></span>
+              Berlaku
             </div>
 
-            <div class="hidden lg:flex items-center gap-3">
-              <div class="relative">
-                <form action="{{ route('news.index') }}" method="GET">
-                  <input
-                    type="text"
-                    name="search"
-                    value="{{ request('search') }}"
-                    placeholder="Pasal..."
-                    class="border border-slate-300 rounded-full px-4 py-2 pl-8 text-sm focus:outline-none focus:ring-primary focus:border-primary"
-                  />
-                </form>
+            <div class="pasal-meta">
+              Buku Kesatu – Aturan Umum<br>
+              Bab I – Batas-Batas Berlakunya Aturan Pidana
+            </div>
+
+            <p>
+              Perumusan limitatif yang terbuka ini dimaksudkan untuk memberikan fleksibilitas praktik
+              dalam perkembangan formulasi tindak pidana.
+            </p>
+          </div>
+
+          <!-- ACCORDION PASAL -->
+          <div class="pasal-accordion-list">
+
+            <div x-data="{open:false}" class="pasal-accordion">
+              <button @click="open = !open">
+                Pasal 1
+                <span x-text="open ? '−' : '+'"></span>
+              </button>
+              <div x-show="open" x-collapse class="pasal-content">
+                Isi pasal 1 ditampilkan di sini...
               </div>
             </div>
 
-        <!-- Content card -->
-        <div class="max-w-xl mx-auto mt-10 px-2 sm:px-6">
-          <div class="bg-white rounded-2xl shadow-xl p-6">
-
-            <!-- Title -->
-            <h2 class="text-4xl font-extrabold text-gray-900">Pasal 565</h2>
-            <p class="text-gray-500 mt-1">Pasal Kejahatan</p>
-
-            <!-- Big Pasal Card (Matches Image) -->
-            <div class="mt-8 border-2 border-red-700 rounded-xl relative px-4 py-6">
-
-              <!-- Label Pasal 6 -->
-              <div class="absolute -top-4 left-4 bg-red-700 text-white px-4 py-1 rounded-full font-semibold shadow">
-                Pasal 6
+            <div x-data="{open:false}" class="pasal-accordion">
+              <button @click="open = !open">
+                Pasal 2
+                <span x-text="open ? '−' : '+'"></span>
+              </button>
+              <div x-show="open" x-collapse class="pasal-content">
+                Isi pasal 2 ditampilkan di sini...
               </div>
-
-              <!-- Status -->
-              <div class="flex items-center gap-2 mt-2 mb-4">
-                <span class="w-3 h-3 rounded-full bg-green-500"></span>
-                <p class="text-sm font-semibold">Berlaku</p>
-              </div>
-
-              <!-- Centered Title Section -->
-              <div class="text-center font-semibold mb-4">
-                Buku Kesatu _ Aturan Umum <br>
-                Bab 1 - Batas-Batas<br>
-                Berlakunya Aturan Pidana<br>
-                Dalam Perundang-undangan
-              </div>
-
-              <!-- Content -->
-              <p class="text-sm leading-relaxed text-gray-700">
-                Perumusan limitatif yang terbuka ini dimaksudkan untuk memberikan fleksibilitas praktik dan 
-                dalam perkembangan formulasi Tindak Pidana oleh pembentuk Undang-Undang pada masa yang akan 
-                datang. Fleksibilitas itu tetap dalam batas kepastian menurut ketentuan peraturan perundang-undangan...
-              </p>
             </div>
 
-            <!-- Collapsible list === MENU PASAL -->
-            <div class="mt-8 space-y-4">
-
-              <!-- PASAL 1 -->
-              <div x-data="{open:false}" class="border border-red-700 rounded-xl overflow-hidden">
-                <button 
-                  @click="open=!open" 
-                  class="w-full flex justify-between items-center bg-red-700 text-white px-4 py-2 font-semibold"
-                >
-                  Pasal 1
-                  <span x-text="open ? '▲' : '▼'" class="text-xs"></span>
-                </button>
-
-                <div x-show="open" x-collapse class="bg-white px-4 py-3 text-sm text-gray-700">
-                  Isi pasal 1 ditampilkan di sini...
-                </div>
+            <div x-data="{open:false}" class="pasal-accordion">
+              <button @click="open = !open">
+                Pasal 3
+                <span x-text="open ? '−' : '+'"></span>
+              </button>
+              <div x-show="open" x-collapse class="pasal-content">
+                Isi pasal 3 ditampilkan di sini...
               </div>
-
-              <!-- PASAL 2 -->
-              <div x-data="{open:false}" class="border border-red-700 rounded-xl overflow-hidden">
-                <button 
-                  @click="open=!open" 
-                  class="w-full flex justify-between items-center bg-red-700 text-white px-4 py-2 font-semibold"
-                >
-                  Pasal 2
-                  <span x-text="open ? '▲' : '▼'" class="text-xs"></span>
-                </button>
-
-                <div x-show="open" x-collapse class="bg-white px-4 py-3 text-sm text-gray-700">
-                  Isi pasal 2 ditampilkan di sini...
-                </div>
-              </div>
-
-              <!-- PASAL 3 -->
-              <div x-data="{open:false}" class="border border-red-700 rounded-xl overflow-hidden">
-                <button 
-                  @click="open=!open" 
-                  class="w-full flex justify-between items-center bg-red-700 text-white px-4 py-2 font-semibold"
-                >
-                  Pasal 3
-                  <span x-text="open ? '▲' : '▼'" class="text-xs"></span>
-                </button>
-
-                <div x-show="open" x-collapse class="bg-white px-4 py-3 text-sm text-gray-700">
-                  Isi pasal 3 ditampilkan di sini...
-                </div>
-              </div>
-
             </div>
 
           </div>
         </div>
 
       </section>
-    <!-- End Pasal KUHP Section-->
+    <!-- END PASAL KUHP -->
+
+
 
     <!-- Berita Terbaru -->
       <div class="flex flex-col px-4 md:px-10 lg:px-14 mt-10">
@@ -157,7 +121,7 @@
           </div>
 
           <!-- Berita 1 -->
-          @foreach ($news->skip(1)->take(2) as $new)
+          @foreach ($news->skip(1)->take(3) as $new)
               <a href="{{ route('news.show', $new->slug) }}"
                 class="relative col-span-5 flex flex-col h-fit md:flex-row gap-3 border border-slate-200 p-3 rounded-xl hover:border-primary hover:cursor-pointer">
                 <div class="bg-primary text-white rounded-full w-fit px-4 py-1 font-normal ml-2 mt-2 absolute text-sm">
