@@ -25,6 +25,11 @@ class LandingController extends Controller
             ->take(5)
             ->get();
         
+        // Check kalau belum ada data
+        if ($news->isEmpty() && $featureds->isEmpty()) {
+            return view('pages.empty-state');
+        }
+        
         return view('pages.landing', compact('featureds', 'news', 'authors'));
     }
 }
