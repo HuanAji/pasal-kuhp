@@ -13,7 +13,10 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Set;
-use illuminate\Support\Str;
+use Illuminate\Support\Str;
+use Filament\Forms\Components\FileUpload;
+
+
 
 class NewsResource extends Resource
 {
@@ -37,7 +40,11 @@ class NewsResource extends Resource
                 ->required(),
                 forms\Components\TextInput::make('slug')
                     ->readOnly(),
-                forms\Components\FileUpload::make('thumbnail')
+                FileUpload::make('thumbnail')
+                    ->disk('public')
+                    ->directory('thumbnail')   // ⬅️ bikin folder thumbnail
+                    ->visibility('public')
+                    ->preserveFilenames()
                     ->image()
                     ->required()
                     ->columnSpanFull(),
