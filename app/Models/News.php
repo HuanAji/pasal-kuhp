@@ -24,9 +24,4 @@ class News extends Model
     {
         return $this->belongsTo(NewsCategory::class, 'news_category_id');
     }
-    
-    public function banner()
-    {
-        return $this->hasOne(Banner::class);
-    }
 }
