@@ -24,18 +24,17 @@
                     </div>
                     <div class="quick-search">
                         <span class="quick-search-label">Cari cepat:</span>
-                        <button class="quick-btn" data-search="565">Pasal 565</button>
-                        <button class="quick-btn" data-search="pidana">Hukum Pidana</button>
-                        <button class="quick-btn" data-search="perdata">Hukum Perdata</button>
+                        @foreach($pasals->take(3) as $pasal)
+                            <button class="quick-btn" data-search="{{ $pasal->nomor_pasal }}">{{ $pasal->nomor_pasal }}</button>
+                        @endforeach
                     </div>
                 </div>
                 
                 <div class="category-buttons">
                     <button class="category-btn active" data-category="all">Semua Pasal</button>
-                    <button class="category-btn" data-category="pidana">Hukum Pidana</button>
-                    <button class="category-btn" data-category="perdata">Hukum Perdata</button>
-                    <button class="category-btn" data-category="umum">Pasal Umum & Ketentuan Dasar</button>
-                    <button class="category-btn" data-category="uji">Pasal Uji Coba</button>
+                    @foreach($pasalCategories as $category)
+                        <button class="category-btn" data-category="{{ $category->slug }}">{{ $category->title }}</button>
+                    @endforeach
                 </div>
                 
                 <div class="instructions">
@@ -43,175 +42,41 @@
                 </div>
                 
                 <div class="pasal-list" id="pasalList">
-                    <!-- Pasal 565 - Diperbaiki -->
-                    <div class="pasal-item" data-category="pidana" data-pasal="565">
-                        <div class="pasal-header" data-pasal="pasal565">
-                            <div>
-                                <div class="pasal-title">Pasal 565</div>
-                                <div class="pasal-subtitle">Pasal Kejahatan</div>
+                    @foreach($pasals as $pasal)
+                        <div class="pasal-item" data-category="{{ $pasal->category->slug }}" data-pasal="{{ $pasal->nomor_pasal }}">
+                            <div class="pasal-header" data-pasal="pasal{{ $pasal->id }}">
+                                <div>
+                                    <div class="pasal-title">
+                                        <span class="status-dot" style="background-color: {{ $pasal->status_pasal->getHexColor() }}"></span>
+                                        {{ $pasal->nomor_pasal }}
+                                    </div>
+                                    <div class="pasal-subtitle">{{ $pasal->category->title }}</div>
+                                </div>
+                                <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
                             </div>
-                            <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-                        </div>
-                        <div class="pasal-content" id="pasal565">
-                            <div class="pasal-body">
-                                <!-- Sub Pasal 6 -->
-                                <div class="sub-pasal">
-                                    <h3 class="sub-pasal-title">Pasal 6</h3>
-                                    <div class="sub-pasal-info">
-                                        <div class="badge-status">
-                                            <span class="status-dot"></span>
-                                            <span class="status-text">Berlaku</span>
-                                        </div>
-                                        <div class="book-info">
-                                            <i class="fas fa-book"></i>
-                                            Buku Kesatu - Aturan Umum
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="chapter-info">
-                                        <i class="fas fa-file-alt"></i>
-                                        <em>Bab 1 - Batas-Batas Berlakunya Aturan Pidana Dalam Perundang-undangan</em>
-                                    </div>
-                                    
+                            <div class="pasal-content" id="pasal{{ $pasal->id }}">
+                                <div class="pasal-body">
                                     <div class="pasal-text">
-                                        <p>Perumusan limitatif yang terbuka ini dimaksudkan untuk memberikan fleksibilitas praktik dan dalam perkembangan formulasi Tindak Pidana oleh pembentuk Undang-Undang pada masa yang akan datang. Fleksibilitas itu tetap dalam batas kepastian menurut ketentuan perundang-undangan.</p>
+                                        <!-- Status Badge -->
+                                        <div class="badge-status mb-3">
+                                            <span class="status-dot" style="background-color: {{ $pasal->status_pasal->getHexColor() }}"></span>
+                                            <span class="status-text">{{ $pasal->status_pasal->getLabel() }}</span>
+                                            <span class="mx-2">•</span>
+                                            <span class="text-sm text-gray-600">Berlaku sejak {{ $pasal->tanggal_berlaku->format('d M Y') }}</span>
+                                        </div>
                                         
-                                        <p>Penentuan Tindak Pidana yang menyerang kepentingan nasional hanya terbatas pada perbuatan tertentu yang sungguh-sungguh melanggar kepentingan hukum nasional yang dilindungi. Pelaku hanya dituntut atas Tindak Pidana menurut hukum pidana Indonesia.</p>
-                                        
-                                        <p>Pelaku Tindak Pidana yang dikenai ketentuan ini adalah setiap Orang, baik warga negara Indonesia maupun orang asing, yang melakukan Tindak Pidana di luar wilayah Negara Kesatuan Republik Indonesia. Alasan penerapan asas nasional pasif, karena pada umumnya Tindak Pidana yang merupakan kepentingan hukum suatu negara, oleh negara tempat Tindak Pidana dilakukan tidak selalu dianggap...</p>
+                                        <!-- Isi Pasal -->
+                                        <div class="pasal-content-text">
+                                            {!! $pasal->isi_pasal !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Pasal 1 - Diperbaiki -->
-                    <div class="pasal-item" data-category="umum" data-pasal="1">
-                        <div class="pasal-header" data-pasal="pasal1">
-                            <div>
-                                <div class="pasal-title">Pasal 1</div>
-                                <div class="pasal-subtitle">Aturan Umum</div>
-                            </div>
-                            <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-                        </div>
-                        <div class="pasal-content" id="pasal1">
-                            <div class="pasal-body">
-                                <div class="pasal-text">
-                                    <p><strong>Pasal 1 - Aturan Umum</strong></p>
-                                    
-                                    <p>Pasal ini berisi aturan umum yang menjadi dasar penerapan hukum pidana di Indonesia. Pasal 1 menjelaskan prinsip-prinsip dasar yang harus diikuti dalam menafsirkan dan menerapkan ketentuan pidana lainnya.</p>
-                                    
-                                    <div class="pasal-principle">
-                                        <h4><i class="fas fa-balance-scale"></i> Asas Legalitas</h4>
-                                        <p>Asas legalitas yang tercantum dalam Pasal 1 menyatakan bahwa tidak ada perbuatan yang dapat dipidana kecuali berdasarkan ketentuan perundang-undangan yang telah ada sebelum perbuatan dilakukan.</p>
-                                    </div>
-                                    
-                                    <div class="pasal-principle">
-                                        <h4><i class="fas fa-shield-alt"></i> Perlindungan Hukum</h4>
-                                        <p>Ketentuan ini menjamin kepastian hukum dan melindungi warga negara dari penerapan hukum pidana yang sewenang-wenang atau retroaktif.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Pasal 2 - Diperbaiki -->
-                    <div class="pasal-item" data-category="umum" data-pasal="2">
-                        <div class="pasal-header" data-pasal="pasal2">
-                            <div>
-                                <div class="pasal-title">Pasal 2</div>
-                                <div class="pasal-subtitle">Ketentuan Umum</div>
-                            </div>
-                            <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-                        </div>
-                        <div class="pasal-content" id="pasal2">
-                            <div class="pasal-body">
-                                <div class="pasal-text">
-                                    <p><strong>Pasal 2 - Ketentuan Umum</strong></p>
-                                    
-                                    <p>Pasal 2 mengatur tentang berlakunya hukum pidana Indonesia bagi setiap orang yang melakukan tindak pidana di wilayah negara Republik Indonesia.</p>
-                                    
-                                    <div class="jurisdiction-info">
-                                        <h4><i class="fas fa-globe-asia"></i> Yurisdiksi Teritorial</h4>
-                                        <p>Asas teritorial yang menjadi prinsip utama dalam pasal ini menegaskan bahwa hukum pidana Indonesia berlaku bagi siapa saja yang melakukan tindak pidana di wilayah Indonesia, tanpa memandang kewarganegaraan pelaku.</p>
-                                    </div>
-                                    
-                                    <div class="jurisdiction-info">
-                                        <h4><i class="fas fa-user-tie"></i> Asas Nasional Aktif dan Pasif</h4>
-                                        <p>Ketentuan dalam pasal ini juga mengatur mengenai penerapan hukum pidana Indonesia terhadap warga negara yang melakukan tindak pidana di luar wilayah Indonesia, dengan memperhatikan asas nasional aktif dan pasif.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Pasal 3 - Diperbaiki -->
-                    <div class="pasal-item" data-category="umum" data-pasal="3">
-                        <div class="pasal-header" data-pasal="pasal3">
-                            <div>
-                                <div class="pasal-title">Pasal 3</div>
-                                <div class="pasal-subtitle">Lingkup Berlakunya Hukum Pidana</div>
-                            </div>
-                            <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-                        </div>
-                        <div class="pasal-content" id="pasal3">
-                            <div class="pasal-body">
-                                <div class="pasal-text">
-                                    <p><strong>Pasal 3 - Lingkup Berlakunya Hukum Pidana</strong></p>
-                                    
-                                    <p>Pasal 3 menjelaskan lingkup berlakunya hukum pidana Indonesia, termasuk ketentuan tentang waktu dan tempat terjadinya tindak pidana.</p>
-                                    
-                                    <div class="scope-info">
-                                        <h4><i class="fas fa-ship"></i> Kapal dan Pesawat</h4>
-                                        <p>Pasal ini mengatur mengenai penerapan hukum pidana Indonesia terhadap tindak pidana yang dilakukan di kapal berbendera Indonesia atau pesawat terbang yang terdaftar di Indonesia, di manapun berada.</p>
-                                    </div>
-                                    
-                                    <div class="scope-info">
-                                        <h4><i class="fas fa-gavel"></i> Yurisdiksi Ekstrateritorial</h4>
-                                        <p>Ketentuan dalam pasal ini penting untuk menjamin penegakan hukum terhadap tindak pidana yang dilakukan di luar wilayah teritorial Indonesia namun masih dalam yurisdiksi negara berdasarkan prinsip-prinsip hukum internasional.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Pasal 6 - Diperbaiki -->
-                    <div class="pasal-item" data-category="pidana" data-pasal="6">
-                        <div class="pasal-header" data-pasal="pasal6">
-                            <div>
-                                <div class="pasal-title">Pasal 6</div>
-                                <div class="pasal-subtitle">Aturan Khusus Tindak Pidana</div>
-                            </div>
-                            <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
-                        </div>
-                        <div class="pasal-content" id="pasal6">
-                            <div class="pasal-body">
-                                <div class="pasal-text">
-                                    <p><strong>Pasal 6 - Aturan Khusus Tindak Pidana</strong></p>
-                                    
-                                    <p>Pasal 6 merupakan bagian dari Buku Kesatu tentang Aturan Umum dalam hukum pidana Indonesia.</p>
-                                    
-                                    <div class="regulation-info">
-                                        <h4><i class="fas fa-expand-alt"></i> Fleksibilitas Praktik</h4>
-                                        <p>Perumusan terbuka dalam pasal ini dimaksudkan untuk memberikan fleksibilitas praktik, namun tetap dalam batas kepastian menurut ketentuan perundang-undangan.</p>
-                                    </div>
-                                    
-                                    <div class="regulation-info">
-                                        <h4><i class="fas fa-bullseye"></i> Kepentingan Nasional</h4>
-                                        <p>Pasal ini mengatur tentang batas-batas berlakunya aturan pidana dalam perundang-undangan, termasuk ketentuan mengenai penerapan hukum pidana Indonesia terhadap tindak pidana yang dilakukan di luar wilayah Indonesia tetapi berdampak pada kepentingan nasional.</p>
-                                    </div>
-                                    
-                                    <div class="regulation-info">
-                                        <h4><i class="fas fa-shield"></i> Perlindungan Hukum Nasional</h4>
-                                        <p>Penentuan Tindak Pidana yang menyatakan kepentingan nasional hanya terbatas pada perbuatan tertentu yang sungguh-sungguh melanggar kepentingan hukum nasional yang dilindungi.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 
-                <div class="no-results" id="noResults">
+                <div class="no-results" id="noResults" style="display: none;">
                     <i class="fas fa-search"></i>
                     <h3>Pasal tidak ditemukan</h3>
                     <p>Tidak ada pasal yang sesuai dengan pencarian Anda. Coba gunakan kata kunci lain.</p>
@@ -220,7 +85,7 @@
             
             <div class="footer-pasal">
                 <p>Dokumen hukum ini disajikan untuk tujuan informasi dan referensi.</p>
-                <p>© 2023 Daftar Isi Pasal Hukum Indonesia</p>
+                <p>© {{ date('Y') }} Daftar Isi Pasal Hukum Indonesia</p>
             </div>
         </div>
     </section>
