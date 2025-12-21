@@ -1527,167 +1527,6 @@ video {
     }
 }
 
-/* ===== PASAL SECTION ===== */
-.pasal-section {
-    padding: 4rem 1rem;
-}
-
-.pasal-header {
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
-    color: #fff;
-}
-
-.pasal-title-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.pasal-logo {
-    width: 32px;
-}
-
-.pasal-header h1 {
-    font-size: 2.3rem;
-    font-weight: 800;
-}
-
-.pasal-header p {
-    margin-top: 0.75rem;
-    opacity: 0.9;
-}
-
-/* FILTER */
-.pasal-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    justify-content: center;
-    margin-top: 1.5rem;
-}
-
-.pasal-pill {
-    padding: 0.4rem 1rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
-
-.pasal-pill.active,
-.pasal-pill:hover {
-    background: #fff;
-    color: #b11212;
-    font-weight: 600;
-}
-
-/* SEARCH */
-.pasal-search {
-    margin-top: 1.2rem;
-}
-
-.pasal-search input {
-    width: 100%;
-    max-width: 320px;
-    padding: 0.6rem 1rem;
-    border-radius: 999px;
-    border: none;
-    outline: none;
-}
-
-/* CARD */
-.pasal-card {
-    background: #fff;
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    max-width: 540px;
-    margin: 3rem auto 0;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.pasal-card h2 {
-    font-size: 2.2rem;
-    font-weight: 800;
-}
-
-.subtitle {
-    color: #777;
-}
-
-/* MAIN BOX */
-.pasal-main-box {
-    position: relative;
-    border: 2px solid #b11212;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin-top: 2rem;
-}
-
-.label {
-    position: absolute;
-    top: -14px;
-    left: 16px;
-    background: #b11212;
-    color: #fff;
-    padding: 0.25rem 0.8rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.pasal-status {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    background: #22c55e;
-    border-radius: 50%;
-}
-
-.pasal-meta {
-    text-align: center;
-    font-weight: 600;
-    margin: 1rem 0;
-}
-
-/* ACCORDION */
-.pasal-accordion {
-    border: 1px solid #b11212;
-    border-radius: 0.9rem;
-    overflow: hidden;
-}
-
-.pasal-accordion + .pasal-accordion {
-    margin-top: 0.8rem;
-}
-
-.pasal-accordion button {
-    width: 100%;
-    padding: 0.7rem 1rem;
-    background: #b11212;
-    color: #fff;
-    font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pasal-content {
-    padding: 0.8rem 1rem;
-    font-size: 0.85rem;
-    color: #444;
-}
-
 /* MOBILE */
 @media (max-width: 640px) {
     .pasal-header h1 {
@@ -1703,67 +1542,431 @@ video {
     background: linear-gradient(180deg, #c44646 0%, #e8c4a0 40%, #6c5463 100%);
 }
 
-/* PASAL */
-.pasal-section {
-    max-width: 1100px;
-    margin: auto;
-    padding: 3rem 1rem;
+/* CSS untuk Section Pasal Hukum */
+.pasal-section-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.pasal-header {
-    text-align: center;
-    margin-bottom: 2rem;
+.container-pasal {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(192, 0, 0, 0.08);
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.header-pasal {
+    background: linear-gradient(to right, #b30000, #8b0000);
+    color: white;
+    padding: 25px 30px;
+    border-bottom: 5px solid #ff4d4d;
+}
+
+.pasal-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
 .pasal-logo {
-    height: 60px;
+    height: 50px;
+    width: auto;
 }
 
-.pasal-card {
-    background: #fff;
-    border-radius: 1.25rem;
-    padding: 2rem;
+.header-pasal h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
 }
 
-/* ACCORDION */
-.pasal-accordion {
-    border-bottom: 1px solid #e5e7eb;
+.subtitle-pasal {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-bottom: 15px;
 }
 
-.pasal-accordion button {
+.header-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.tag {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.content-pasal {
+    padding: 30px;
+}
+
+.search-container {
+    margin-bottom: 25px;
+}
+
+.search-box {
+    position: relative;
+    max-width: 500px;
+    margin-bottom: 10px;
+}
+
+.search-box input {
     width: 100%;
+    padding: 14px 20px;
+    padding-left: 50px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #b30000;
+    box-shadow: 0 0 0 3px rgba(179, 0, 0, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #b30000;
+    font-size: 1.2rem;
+}
+
+.quick-search {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.quick-search-label {
+    color: #b30000;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.quick-btn {
+    background: transparent;
+    border: 1px solid #ffb3b3;
+    color: #b30000;
+    padding: 5px 12px;
+    border-radius: 15px;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.quick-btn:hover {
+    background-color: #ffebeb;
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    padding: 12px 24px;
+    background-color: #f8f8f8;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.category-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.category-btn.active {
+    background-color: #b30000;
+    color: white;
+    border-color: #b30000;
+}
+
+.instructions {
+    background-color: #fff5f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid #b30000;
+    font-size: 0.95rem;
+}
+
+.instructions i {
+    color: #b30000;
+    margin-right: 8px;
+}
+
+.pasal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.pasal-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.pasal-item:hover {
+    box-shadow: 0 3px 15px rgba(179, 0, 0, 0.1);
+    border-color: #ffb3b3;
+}
+
+.pasal-item .pasal-header {
+    background-color: #fff5f5;
+    padding: 18px 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-left: 4px solid #b30000;
+}
+
+.pasal-item .pasal-header.active {
+    background-color: #ffe6e6;
+    border-left-color: #ff4d4d;
+}
+
+.pasal-title {
+    font-size: 1.3rem;
     font-weight: 600;
-    padding: 1rem 0;
+    color: #8b0000;
+}
+
+.pasal-subtitle {
+    font-size: 1rem;
+    color: #b30000;
+    margin-top: 3px;
+    font-weight: 500;
+}
+
+.toggle-icon {
+    color: #b30000;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.toggle-icon.active {
+    transform: rotate(180deg);
+    color: #ff4d4d;
 }
 
 .pasal-content {
-    padding: 0.5rem 0 1rem;
-    color: #374151;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background-color: #fffbfb;
 }
 
-/* BERITA */
-.berita-card {
-    height: 100%;
-    border-radius: 1rem;
+.pasal-content.active {
+    padding: 25px;
+    max-height: 1000px;
 }
 
-.berita-img-main {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 1rem;
+.pasal-body {
+    color: #444;
+    line-height: 1.7;
 }
 
-.berita-side {
+/* Style untuk konten pasal yang diperbaiki */
+.sub-pasal {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sub-pasal:last-child {
+    border-bottom: none;
+}
+
+.sub-pasal-title {
+    color: #8b0000;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ffb3b3;
+}
+
+.sub-pasal-info {
     display: flex;
-    gap: 1rem;
-    border-radius: 1rem;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-.berita-img-side {
-    width: 250px;
-    object-fit: cover;
-    border-radius: 0.75rem;
+.badge-status {
+    background-color: #e8f5e8;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #2e7d32;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-text {
+    font-weight: 500;
+}
+
+.book-info {
+    background-color: #f0f7ff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #1565c0;
+}
+
+.book-info i {
+    font-size: 0.8rem;
+}
+
+.chapter-info {
+    background-color: #fff8e1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #ff8f00;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.chapter-info i {
+    color: #ffa000;
+}
+
+.pasal-text p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #444;
+}
+
+.pasal-text strong {
+    color: #8b0000;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.pasal-principle,
+.jurisdiction-info,
+.scope-info,
+.regulation-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #b30000;
+}
+
+.pasal-principle h4,
+.jurisdiction-info h4,
+.scope-info h4,
+.regulation-info h4 {
+    color: #8b0000;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pasal-principle i,
+.jurisdiction-info i,
+.scope-info i,
+.regulation-info i {
+    color: #ff4d4d;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    display: none;
+}
+
+.no-results i {
+    font-size: 3rem;
+    color: #ffb3b3;
+    margin-bottom: 15px;
+}
+
+.footer-pasal {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+    background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+    .container-pasal {
+        border-radius: 8px;
+    }
+
+    .content-pasal {
+        padding: 20px;
+    }
+
+    .pasal-item .pasal-header {
+        padding: 15px;
+    }
+
+    .pasal-content.active {
+        padding: 20px;
+    }
+
+    .header-pasal h1 {
+        font-size: 1.8rem;
+    }
+
+    .category-buttons {
+        justify-content: center;
+    }
+
+    .category-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .quick-search {
+        text-align: center;
+    }
+
+    .sub-pasal-info {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
