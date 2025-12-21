@@ -13,15 +13,7 @@
                     <img src="{{ asset('assets/img/Logo.png') }}" class="pasal-logo">
                     <h1>Daftar Isi Pasal Hukum</h1>
                 </div>
-                <p class="subtitle-pasal">Telusuri pasal-pasal hukum Indonesia secara mudah, cepat, dan terstruktur.</p>
-                
-                <div class="header-tags">
-                    <div class="tag">Hukum Pidana</div>
-                    <div class="tag">Hukum Perdata</div>
-                    <div class="tag">Pasal Umum & Ketentuan Dasar</div>
-                    <div class="tag">Pasal Uji Coba</div>
-                    <div class="tag">Pasal 565</div>
-                </div>
+                <p class="subtitle-pasal">Telusuri pasal-pasal hukum Indonesia secara mudah, cepat, dan terstruktur.</p>             
             </header>
             
             <div class="content-pasal">
@@ -233,7 +225,7 @@
         </div>
     </section>
     <!-- END PASAL KUHP SECTION -->
-    
+
     <!-- Berita Terbaru -->
     <div class="flex flex-col px-4 md:px-10 lg:px-14 mt-10">
         <div class="flex flex-col md:flex-row w-full mb-6">
