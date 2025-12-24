@@ -1535,6 +1535,14 @@ video {
     .pasal-card {
         margin-top: 2rem;
     }
+    .instructions {
+        display: none;
+    }
+    .news-content {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        text-align: justify;
+    }
 }
 
 /* BACKGROUND */
@@ -1544,7 +1552,7 @@ video {
 
 /* CSS untuk Section Pasal Hukum */
 .pasal-section-container {
-    padding: 20px;
+    padding: none;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1557,42 +1565,114 @@ video {
     margin-bottom: 40px;
 }
 
-.header-pasal {
-    background: linear-gradient(to right, #b30000, #8b0000);
-    color: white;
-    padding: 25px 30px;
-    border-bottom: 5px solid #ff4d4d;
+/* NAVBAR PASAL */
+.navbar-pasal {
+    padding: 40px 20px 30px;
+    color: #fff;
 }
 
-.pasal-title-wrap {
+/* Container */
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Judul */
+.navbar-title {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 15px;
     margin-bottom: 10px;
 }
 
-.pasal-logo {
-    height: 50px;
-    width: auto;
+.navbar-logo {
+    height: 48px;
 }
 
-.header-pasal h1 {
-    font-size: 2.2rem;
+.navbar-title h1 {
+    font-size: 2.4rem;
     font-weight: 700;
 }
 
-.subtitle-pasal {
+/* Subtitle */
+.navbar-subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
-    font-weight: 300;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+/* Action Area */
+.navbar-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Tags */
+.navbar-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .tag {
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 5px 12px;
-    border-radius: 20px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: transparent;
+    color: white;
     font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag:hover,
+.tag.active {
+    background-color: #a00000;
+    border-color: #a00000;
+}
+
+/* Search */
+.navbar-search {
+    position: relative;
+}
+
+.navbar-search input {
+    padding: 10px 40px 10px 15px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    width: 220px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #666;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-title h1 {
+        font-size: 1.9rem;
+    }
+
+    .navbar-search input {
+        width: 100%;
+    }
 }
 
 .content-pasal {
@@ -1665,8 +1745,10 @@ video {
 .category-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
     margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
 }
 
 .category-btn {
@@ -1785,10 +1867,12 @@ video {
     margin-bottom: 25px;
     padding-bottom: 20px;
     border-bottom: 1px solid #f0f0f0;
+    text-align: center;
 }
 
 .sub-pasal:last-child {
     border-bottom: none;
+    text-align: center;
 }
 
 .sub-pasal-title {
@@ -1797,6 +1881,7 @@ video {
     margin-bottom: 15px;
     padding-bottom: 8px;
     border-bottom: 2px solid #ffb3b3;
+    text-align: center;
 }
 
 .sub-pasal-info {
@@ -1962,4 +2047,53 @@ video {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+.news-content {
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Paragraf */
+.news-content p {
+    margin-bottom: 1.2rem;
+}
+
+/* Heading di dalam konten */
+.news-content h1,
+.news-content h2,
+.news-content h3 {
+    margin: 1.8rem 0 1rem;
+    font-weight: 700;
+    color: #8b0000;
+    text-align: left;
+}
+
+/* List */
+.news-content ul,
+.news-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+/* Gambar di dalam konten berita */
+.news-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Quote */
+.news-content blockquote {
+    border-left: 4px solid #8b0000;
+    padding-left: 15px;
+    font-style: italic;
+    color: #555;
+    margin: 20px 0;
 }
