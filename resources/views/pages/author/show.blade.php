@@ -13,7 +13,7 @@
     </div>
 
     <!-- Berita -->
-    <div class=" flex flex-col gap-5 px-4 lg:px-14">
+    <div class=" flex flex-col gap-5 px-4 lg:px-14 mb-10">
       <div class="grid sm:grid-cols-1 gap-5 lg:grid-cols-4">
         @foreach ($author->news as $news)
           <a href="{{ route('news.show', $news->slug) }}">

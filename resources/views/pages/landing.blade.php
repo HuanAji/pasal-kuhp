@@ -38,7 +38,8 @@
                         <div class="quick-search">  
                             <span class="quick-search-label">Cari cepat:</span>
                             @foreach($pasals->take(3) as $pasal)
-                                <button class="quick-btn" data-search="{{ $pasal->nomor_pasal }}">{{ $pasal->nomor_pasal }}</button>
+                                <button 
+                                 class="quick-btn" data-search="{{ $pasal->nomor_pasal }}">{{ $pasal->nomor_pasal }}</button>
                             @endforeach
                         </div>
                     </div>
@@ -116,7 +117,7 @@
                         <p class="font-bold text-xl mt-3">
                             {{ $news[0]->title }}
                         </p>
-                        <p class="text-slate-700 text-base mt-1">{{ \Carbon\Carbon::parse($news[0]->created_at)->format('d F Y') }}</p>
+                        <p class="text-slate-800 text-base mt-1">{{ \Carbon\Carbon::parse($news[0]->created_at)->format('d F Y') }}</p>
                     </a>
                 </div>
 
@@ -140,7 +141,7 @@
     <!-- End Berita Terbaru -->
 
     <!-- Author -->
-        <div class="flex flex-col px-4 md:px-10 lg:px-14 mt-10">
+        <div class="flex flex-col px-4 md:px-10 lg:px-14 mt-10 mb-10">
             <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
                 <div class="font-bold text-2xl text-center md:text-left">
                     <p>Kenali Author</p>
@@ -176,7 +177,7 @@
                     Lihat Semua
                 </a>
             </div>
-            <div class="grid sm:grid-cols-1 gap-5 lg:grid-cols-4">
+            <div class="grid sm:grid-cols-1 gap-5 lg:grid-cols-4 mb-10">
                 @foreach ($featureds as $featured)
                     <a href="{{ route('news.show', $featured-> slug) }}">
                         <div class="border border-slate-200 p-3 rounded-xl hover:border-primary hover:cursor-pointer transition duration-300 ease-in-out" style="height:100%">

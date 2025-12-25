@@ -1746,7 +1746,6 @@ video {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 30px;
     justify-content: center;
     align-items: center;
 }
@@ -1795,24 +1794,25 @@ video {
 
 .pasal-item {
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .pasal-item:hover {
-    box-shadow: 0 3px 15px rgba(179, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(179, 0, 0, 0.1);
     border-color: #ffb3b3;
 }
 
 .pasal-item .pasal-header {
     background-color: #fff5f5;
-    padding: 18px 20px;
+    padding: 4px 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    border-left: 4px solid #b30000;
+    border-left: 7px solid #b30000;
+    border-radius: 10px;
 }
 
 .pasal-item .pasal-header.active {
@@ -1821,16 +1821,16 @@ video {
 }
 
 .pasal-title {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #8b0000;
 }
 
 .pasal-subtitle {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #b30000;
     margin-top: 3px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .toggle-icon {
