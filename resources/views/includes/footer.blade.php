@@ -1,4 +1,4 @@
-<footer class="kuhp-footer mt-12">
+<footer id="about" class="kuhp-footer mt-12">
     <div class="footer-container">
         <!-- Bagian utama footer -->
         <div class="footer-main">

@@ -28,7 +28,7 @@
     <!-- END HEADER Title Pasal -->
 
     <!-- PASAL KUHP SECTION -->
-        <section class="pasal-section-container">
+        <section id="pasal" class="pasal-section-container">
             <div class="container-pasal"><div class="content-pasal">
                     <div class="search-container">
                         <div class="search-box">
@@ -99,7 +99,8 @@
     <!-- END PASAL KUHP SECTION -->
 
     <!-- Berita Terbaru -->
-        <div class="flex flex-col px-4 md:px-10 lg:px-14 mt-10">
+        <section id="berita">
+            <div class="flex flex-col px-4 md:px-10 lg:px-14 mt-10">
             <div class="flex flex-col md:flex-row w-full mb-6">
                 <div class="font-bold text-2xl text-center md:text-left">
                     <p>Berita Terbaru</p>
@@ -138,6 +139,7 @@
                 @endforeach
             </div>
         </div>
+        </section>
     <!-- End Berita Terbaru -->
 
     <!-- Author -->

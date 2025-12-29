@@ -1550,6 +1550,16 @@ video {
     background: linear-gradient(180deg, #c44646 0%, #e8c4a0 40%, #6c5463 100%);
 }
 
+/* Scrollable Navbar */
+html {
+    scroll-behavior: smooth;
+}
+
+section,
+footer {
+    scroll-margin-top: 100px;
+}
+
 /* CSS untuk Section Pasal Hukum */
 .pasal-section-container {
     padding: none;
