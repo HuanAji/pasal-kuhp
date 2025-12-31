@@ -165,6 +165,8 @@ html,
     /* 6 */
     -webkit-tap-highlight-color: transparent;
     /* 7 */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
 /*
@@ -177,6 +179,7 @@ body {
     /* 1 */
     line-height: inherit;
     /* 2 */
+    overflow-x: hidden;
 }
 
 /*
@@ -569,6 +572,24 @@ video {
 
 .sticky {
     position: sticky;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.right-0 {
+    right: 0px;
+}
+
+.pt-24 {
+    padding-top: 6rem;
+}
+
+@media (min-width: 1024px) {
+    .lg\:pt-28 {
+        padding-top: 7rem;
+    }
 }
 
 .inset-x-0 {
@@ -1551,8 +1572,10 @@ video {
 }
 
 /* Scrollable Navbar */
-html {
+html, body {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 section,
@@ -1562,7 +1585,7 @@ footer {
 
 /* CSS untuk Section Pasal Hukum */
 .pasal-section-container {
-    padding: none;
+    padding: 0;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1593,7 +1616,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
     margin-bottom: 10px;
 }
 
@@ -1674,6 +1697,15 @@ footer {
     .navbar-actions {
         flex-direction: column;
         align-items: center;
+    }
+
+    .navbar-title {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .navbar-logo {
+        height: 40px;
     }
 
     .navbar-title h1 {
@@ -1928,11 +1960,14 @@ footer {
     background-color: #f0f7ff;
     padding: 6px 12px;
     border-radius: 20px;
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 6px;
     font-size: 0.9rem;
     color: #1565c0;
+    width: fit-content;
+    margin: 0 auto 10px auto;
 }
 
 .book-info i {
@@ -1946,9 +1981,11 @@ footer {
     margin-bottom: 20px;
     color: #ff8f00;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     font-size: 0.95rem;
+    text-align: center;
 }
 
 .chapter-info i {
@@ -1959,6 +1996,7 @@ footer {
     margin-bottom: 15px;
     line-height: 1.8;
     color: #444;
+    text-align: justify;
 }
 
 .pasal-text strong {
@@ -2107,3 +2145,152 @@ footer {
     color: #555;
     margin: 20px 0;
 }
+
+/* Custom Mobile Overrides for Author Grid */
+@media (max-width: 639px) {
+    /*grid*/
+    div.grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5.gap-6 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.75rem !important; /* gap-3 */
+    }
+    
+    /*container*/
+    div.grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5.gap-6 > a > div {
+         padding: 0.35rem !important; /* p-3 */
+         border-radius: 0.75rem !important; /* rounded-xl */
+    }
+    
+    /* Gambar */
+    div.grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5.gap-6 > a > div > img {
+        width: 2rem !important; /* w-16 */
+        height: 2rem !important;
+    }
+
+    /*Judul*/
+    div.grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5.gap-6 > a > div > p:first-of-type {
+        font-size: 0.875rem !important; /* text-sm */
+        margin-top: 0.5rem !important; /* mt-2 (reduced) */
+        
+        /* Clamp text to avoid breaking layout */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /*Deskripsi*/
+    div.grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-3.lg\:grid-cols-5.gap-6 > a > div > p:last-of-type {
+        font-size: 0.75rem !important; /* text-xs */
+    }
+}
+
+/* Custom Mobile Overrides for Berita Unggulan Grid */
+@media (max-width: 639px) {
+    /* Grid - Force 2 columns on mobile */
+    div.grid.sm\:grid-cols-1.gap-5.lg\:grid-cols-4.mb-10 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1rem !important; /* gap-3 for tighter spacing */
+    }
+    
+    /* Container padding */
+    div.grid.sm\:grid-cols-1.gap-5.lg\:grid-cols-4.mb-10 > a > div {
+        padding: 0.5rem !important; /* p-2 for smaller cards */
+    }
+    
+    /* Category badge - smaller on mobile */
+    div.grid.sm\:grid-cols-1.gap-5.lg\:grid-cols-4.mb-10 > a > div > div.bg-primary {
+        font-size: 0.75rem !important; /* text-xs */
+        padding: 0.25rem 0.75rem !important; /* px-3 py-1 */
+    }
+    
+    /* Image height adjustment */
+    div.grid.sm\:grid-cols-1.gap-5.lg\:grid-cols-4.mb-10 > a > div > img {
+        height: 120px !important; /* Smaller image for mobile */
+    }
+    
+    /* Title - smaller font and line clamp */
+    div.grid.sm\:grid-cols-1.gap-5.lg\:grid-cols-4.mb-10 > a > div > p.font-bold {
+        font-size: 0.875rem !important; /* text-sm */
+        line-height: 1.25rem !important;
+        
+        /* Clamp to 2 lines */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    /* Date - smaller font */
+    div.grid.sm\:grid-cols-1.gap-5.lg\:grid-cols-4.mb-10 > a > div > p.text-slate-400 {
+        font-size: 0.75rem !important; /* text-xs */
+    }
+}
+
+/* Custom Mobile Overrides for Berita Terbaru Section */
+@media (max-width: 639px) {
+    /* Main container - make it a proper grid */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.75rem !important;
+    }
+    
+    /* Berita Utama - span full width (2 columns) */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 > div.col-span-7 {
+        grid-column: span 2 !important;
+    }
+    
+    /* Berita 1 items - each takes 1 column (2 columns layout) */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 > a.col-span-5 {
+        grid-column: span 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0.5rem !important;
+    }
+    
+    /* Last item (3rd news) - center it by spanning 2 columns and centering content */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 > a.col-span-5:nth-last-child(1) {
+        grid-column: 1 / -1 !important; /* Span full width */
+        max-width: 50% !important; /* Limit to half width */
+        margin: 0 auto !important; /* Center it */
+    }
+    
+    /* Category badge - smaller */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 > a.col-span-5 > div.bg-primary {
+        font-size: 0.65rem !important;
+        padding: 0.15rem 0.5rem !important;
+    }
+    
+    /* Image - adjust size for mobile */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 > a.col-span-5 > img {
+        width: 100% !important;
+        height: 120px !important;
+        object-fit: cover !important;
+    }
+    
+    /* Text container */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 > a.col-span-5 > div {
+        margin-top: 0.5rem !important;
+    }
+    
+    /* Title - smaller font with line clamp */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 > a.col-span-5 > div > p.font-semibold {
+        font-size: 0.875rem !important;
+        line-height: 1.25rem !important;
+        
+        /* Clamp to 2 lines */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    /* Date - smaller font */
+    div.grid.grid-cols-1.md\:grid-cols-1.lg\:grid-cols-12.gap-5 > a.col-span-5 > div > p.text-slate-500 {
+        font-size: 0.75rem !important;
+    }
+}
+

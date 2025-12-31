@@ -3,7 +3,7 @@
 @section('title', 'PasalKUHP | Updated Pasal KUHP Indonesia')
 
 @section('content')
-<div class="min-h-screen" style="background: linear-gradient(180deg, #c44646 0%, #e8c4a0 40%, #6c5463 100%);">
+<div class="min-full-screen pt-24 lg:pt-28" style="background: linear-gradient(180deg, #c44646 0%, #e8c4a0 40%, #6c5463 100%);">
     <!-- HEADER Title Pasal -->
         <header class="navbar-pasal">
             <div class="navbar-container">
@@ -168,7 +168,7 @@
     <!-- End Author -->
 
     <!-- Berita Unggulan -->
-        <div class="flex flex-col px-14 mt-10">
+        <div class="flex flex-col px-4 md:px-10 lg:px-14 mt-10">
             <div class="flex flex-col md:flex-row justify-between items-center w-full mb-6">
                 <div class="font-bold text-2xl text-center md:text-left">
                     <p>Berita Unggulan</p>

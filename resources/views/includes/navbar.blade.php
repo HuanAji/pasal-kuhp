@@ -1,5 +1,5 @@
 <!-- NAVBAR -->
-<div class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
   <div class="py-5 px-4 lg:px-14">
     <div class="flex items-center justify-between w-full">
 
@@ -62,15 +62,12 @@
             <form action="{{ route('news.index') }}" method="GET">
               <input type="text" name="search" value="{{ request('search') }}" 
                 placeholder="Cari berita..." 
-                class="border border-slate-300 rounded-full px-4 py-2 pl-8 text-sm focus:outline-none focus:ring-primary focus:border-primary" />
+                class="border border-red rounded-full px-4 py-2 pl-8 text-sm focus:outline-none focus:ring-primary focus:border-primary" />
             </form>
               <span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
                 <img src="{{ asset('assets/img/search.png') }}" class="w-4">
               </span>
           </div>
-          <a href="/admin" class="bg-primary px-8 py-2 rounded-full text-white font-semibold">
-             Masuk 
-          </a>
         </div>
 
         <!-- HAMBURGER -->

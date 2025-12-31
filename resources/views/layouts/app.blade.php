@@ -15,9 +15,9 @@
 </head>
 
 <body>
-  <div class="w-full">
-    @include('includes.navbar')
+  @include('includes.navbar')
 
+  <div class="w-full">
     @yield('content')
   </div>
 
