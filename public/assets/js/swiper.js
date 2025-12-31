@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const pasalList = document.getElementById("pasalList");
     const noResults = document.getElementById("noResults");
     const quickSearchButtons = document.querySelectorAll(".quick-btn");
+    const clearSearch = document.getElementById("clearSearch");
 
     let activePasal = null;
     let currentCategory = "all";
@@ -123,6 +124,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener untuk search input
     searchInput.addEventListener("input", function () {
         currentSearch = this.value.toLowerCase().trim();
+        // Toggle clear button
+        if (this.value.length > 0) {
+            clearSearch.style.display = "block";
+        } else {
+            clearSearch.style.display = "none";
+        }
+        filterPasals();
+    });
+
+    // Event listener untuk clear search
+    clearSearch.addEventListener("click", function () {
+        searchInput.value = "";
+        currentSearch = "";
+        this.style.display = "none";
+        searchInput.focus();
         filterPasals();
     });
 
@@ -131,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             searchInput.value = this.getAttribute("data-search");
             currentSearch = searchInput.value.toLowerCase().trim();
+            clearSearch.style.display = "block";
             filterPasals();
         });
     });

@@ -12,6 +12,7 @@ class News extends Model
         'title',
         'slug',
         'thumbnail',
+        'thumbnail_caption',
         'content',
         'is_featured',
     ];

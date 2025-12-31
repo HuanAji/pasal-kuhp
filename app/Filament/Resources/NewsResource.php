@@ -48,6 +48,8 @@ class NewsResource extends Resource
                     ->image()
                     ->required()
                     ->columnSpanFull(),
+                forms\Components\TextInput::make('thumbnail_caption')
+                    ->columnSpanFull(),
                 forms\Components\RichEditor::make('content')
                     ->required()
                     ->columnSpanFull(),

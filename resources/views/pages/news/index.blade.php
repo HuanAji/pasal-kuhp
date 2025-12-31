@@ -3,13 +3,14 @@
 @section('title', 'Semua Berita')
 
 @section('content')
+  <div class="pt-24 lg:pt-28">
     <div class="items-center p-2 bg-cover mb-16" style="background-image: url('{{ asset ('assets/img/bg-profile.png') }}')">
       <h1 class="text-center text-white font-bold text-2xl p-24" >Semua Berita</h1>
     </div>
 
     <!-- Berita -->
     <div class=" flex flex-col gap-5 px-4 lg:px-14 mb-16">
-      <div class="grid sm:grid-cols-1 gap-5 lg:grid-cols-4">
+      <div class="grid sm:grid-cols-1 gap-5 lg:grid-cols-4 berita-grid">
         @foreach ($news as $item)
           <a href="{{ route('news.show', $item->slug) }}">
             <div
@@ -27,4 +28,5 @@
 
       {{ $news->links('vendor.pagination.custom') }}
     </div>
+  </div>
 @endsection

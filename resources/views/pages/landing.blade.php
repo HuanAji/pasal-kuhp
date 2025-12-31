@@ -34,6 +34,7 @@
                         <div class="search-box">
                             <i class="fas fa-search search-icon"></i>
                             <input type="text" id="searchInput" placeholder="Cari pasal atau kata kunci...">
+                            <i class="fas fa-times-circle clear-search" id="clearSearch" style="display: none;"></i>
                         </div>
                         <div class="quick-search">  
                             <span class="quick-search-label">Cari cepat:</span>
