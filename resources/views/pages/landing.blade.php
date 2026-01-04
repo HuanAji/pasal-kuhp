@@ -13,9 +13,9 @@
                         <h1>Daftar Isi Pasal Hukum</h1>
                 </div>
 
-                <!-- Subtitle -->
-                    <p class="navbar-subtitle">
-                        Telusuri pasal-pasal hukum Indonesia secara mudah, cepat, dan terstruktur.
+                <!-- Subtitle dengan ID untuk Typewriter Effect -->
+                    <p class="navbar-subtitle" id="typewriter">
+                        <!-- Text will be typed here -->
                     </p>
             </div>
                 <div class="category-buttons">
@@ -31,10 +31,17 @@
         <section id="pasal" class="pasal-section-container">
             <div class="container-pasal"><div class="content-pasal">
                     <div class="search-container">
-                        <div class="search-box">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" id="searchInput" placeholder="Cari pasal atau kata kunci...">
-                            <i class="fas fa-times-circle clear-search" id="clearSearch" style="display: none;"></i>
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
+                            <div class="search-box">
+                                <img src="{{ asset('assets/img/search.png') }}" class="search-icon" style="width: 20px;">
+                                <input type="text" id="searchInput" placeholder="Cari pasal atau kata kunci...">
+                                <i class="fas fa-times-circle clear-search" id="clearSearch" style="display: none;"></i>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="{{ route('pasal.index') }}" class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#a00000] transition h-fit">
+                                    Lihat Semua Pasal
+                                </a>
+                            </div>
                         </div>
                         <div class="quick-search">  
                             <span class="quick-search-label">Cari cepat:</span>
@@ -60,7 +67,12 @@
                                         </div>
                                         <div class="pasal-subtitle">{{ $pasal->category->title }}</div>
                                     </div>
-                                    <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                                    <div class="flex items-center gap-4">
+                                        <a href="{{ route('pasal.show', $pasal->id) }}" class="text-slate-400 hover:text-primary transition" title="Lihat Detail Halaman" onclick="event.stopPropagation()">
+                                            <i class="fas fa-external-link-alt text-sm"></i>
+                                        </a>
+                                        <div class="toggle-icon"><i class="fas fa-chevron-down"></i></div>
+                                    </div>
                                 </div>
                                 <div class="pasal-content" id="pasal{{ $pasal->id }}">
                                     <div class="pasal-body">
@@ -115,7 +127,7 @@
                     <a href="{{ route('news.show', $news[0]->slug) }}">
                         <div class="bg-primary text-white rounded-full w-fit px-4 py-1 font-normal ml-5 mt-5 absolute">{{ $news[0]->newsCategory->title }}
                         </div>
-                        <img src="{{ asset('storage/' . $news[0]->thumbnail) }}" alt="berita1" class="rounded-2xl">
+                        <img src="{{ asset('storage/' . $news[0]->thumbnail) }}" alt="berita1" class="rounded-2xl w-full object-cover" style="height: 480px;">
                         <p class="font-bold text-xl mt-3">
                             {{ $news[0]->title }}
                         </p>
@@ -197,4 +209,24 @@
         </div>
     <!-- End Berita Unggulan -->
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const text = "Telusuri pasal-pasal hukum Indonesia secara mudah, cepat, dan terstruktur.";
+    const delay = 50; // Speed in ms
+    const element = document.getElementById('typewriter');
+    let i = 0;
+
+    function typeWriter() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, delay);
+        }
+    }
+
+    // Start the animation
+    typeWriter();
+});
+</script>
 @endsection

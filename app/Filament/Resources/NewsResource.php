@@ -62,10 +62,18 @@ class NewsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('author.name')->label('Author'),
-                Tables\Columns\TextColumn::make('newsCategory.title')->label('Category'),
-                Tables\Columns\TextColumn::make('title')->limit(35),
-                Tables\Columns\TextColumn::make('slug')->limit(35),
+                Tables\Columns\TextColumn::make('author.name')
+                    ->label('Author')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('newsCategory.title')
+                    ->label('Category')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->limit(35)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('slug')
+                    ->limit(35)
+                    ->searchable(),
                 Tables\Columns\ImageColumn::make('thumbnail'),
                 Tables\Columns\ToggleColumn::make('is_featured'),
             ])

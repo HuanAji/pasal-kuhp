@@ -35,4 +35,11 @@ class PasalController extends Controller
         
         return view('pages.pasal.index', compact('pasals', 'categories'));
     }
+
+    public function show($id)
+    {
+        $pasal = Pasal::with('category')->findOrFail($id);
+        
+        return view('pages.pasal.show', compact('pasal'));
+    }
 }

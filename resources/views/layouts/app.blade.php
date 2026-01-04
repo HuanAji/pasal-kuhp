@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title')</title>
-  <link href={{ asset('assets/css/output.css') }} rel="stylesheet">
+  <link rel="icon" type="image/png" href="{{ asset('assets/img/Logo.png') }}">
+  <link href="{{ asset('assets/css/output.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" />
   
   <!-- Preload local swiper and app swiper script -->

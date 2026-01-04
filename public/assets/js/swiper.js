@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
             pasalList.style.display = "none";
         } else {
             noResults.style.display = "none";
-            pasalList.style.display = "block";
+            pasalList.style.display = "flex";
         }
     }
 

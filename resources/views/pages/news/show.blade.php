@@ -13,7 +13,7 @@
             <div class="text-slate-500 text-sm lg:text-base">
               {{ $news->author->name }} - <span class="text-primary font-semibold">{{ $news->newsCategory->title }}</span>
             </div>
-            <div class="text-slate-500 text-xs lg:text-sm">
+            <div class="text-slate-600 text-xs lg:text-sm">
               {{ $news->created_at->isoFormat('dddd, D MMM Y HH:mm') }} WIB
             </div>
           </div>

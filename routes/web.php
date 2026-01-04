@@ -18,3 +18,4 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/author/{username}', [AuthorController::class, 'show'])->name('author.show');
 Route::get('/pasal', [PasalController::class, 'index'])->name('pasal.index');
+Route::get('/pasal/{id}', [PasalController::class, 'show'])->name('pasal.show');

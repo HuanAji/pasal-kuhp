@@ -1669,28 +1669,6 @@ footer {
     border-color: #a00000;
 }
 
-/* Search */
-.navbar-search {
-    position: relative;
-}
-
-.navbar-search input {
-    padding: 10px 40px 10px 15px;
-    border-radius: 999px;
-    border: none;
-    outline: none;
-    font-size: 0.9rem;
-    width: 220px;
-}
-
-.search-icon {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1rem;
-    color: #666;
-}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -1734,8 +1712,8 @@ footer {
 .search-box input {
     width: 100%;
     padding: 14px 20px;
-    padding-left: 50px;
-    border: 2px solid #e0e0e0;
+    padding-left: 70px;
+    border: 2px solid #d70707;
     border-radius: 30px;
     font-size: 1rem;
     transition: all 0.3s;
@@ -1744,16 +1722,33 @@ footer {
 .search-box input:focus {
     outline: none;
     border-color: #b30000;
+    border-radius: 20px;
     box-shadow: 0 0 0 3px rgba(179, 0, 0, 0.1);
 }
 
 .search-icon {
     position: absolute;
-    left: 20px;
+    left: 40px;
     top: 50%;
     transform: translateY(-50%);
     color: #b30000;
     font-size: 1.2rem;
+}
+
+.clear-search {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.clear-search:hover {
+    color: #b30000;
 }
 
 .quick-search {
@@ -1848,7 +1843,7 @@ footer {
 
 .pasal-item .pasal-header {
     background-color: #fff5f5;
-    padding: 4px 6px;
+    padding: 14px 22px; /* Reduced from 20px 25px */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1857,22 +1852,38 @@ footer {
     border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+    .pasal-item .pasal-header {
+        padding: 12px 18px; /* Mobile padding */
+        border-left-width: 5px;
+    }
+}
+
 .pasal-item .pasal-header.active {
     background-color: #ffe6e6;
     border-left-color: #ff4d4d;
 }
 
 .pasal-title {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: #8b0000;
 }
 
 .pasal-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     color: #b30000;
-    margin-top: 3px;
-    font-weight: 400;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .pasal-title {
+        font-size: 1.05rem;
+    }
+    .pasal-subtitle {
+        font-size: 0.8rem;
+    }
 }
 
 .toggle-icon {
@@ -1896,7 +1907,13 @@ footer {
 
 .pasal-content.active {
     padding: 25px;
-    max-height: 1000px;
+    max-height: 2000px;
+}
+
+@media (max-width: 768px) {
+    .pasal-content.active {
+        padding: 15px;
+    }
 }
 
 .pasal-body {
@@ -2294,3 +2311,221 @@ footer {
     }
 }
 
+/* Hanya berlaku untuk layar mobile hingga tablet (di bawah 1024px) */
+@media (max-width: 1023px) {
+    .sidebar-news-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important; /* Menjadi 2 kolom */
+        gap: 12px !important; /* Jarak antar kartu */
+    }
+
+    .sidebar-news-item {
+        padding: 10px !important;
+    }
+
+    /* Memastikan gambar memiliki tinggi yang proporsional di grid 2 kolom */
+    .sidebar-news-item img {
+        height: 110px !important;
+        width: 100% !important;
+        margin-bottom: 8px;
+    }
+
+    /* Menghilangkan paksaan flex-row agar konten judul di bawah gambar */
+    .sidebar-news-item .flex.flex-col.lg\:flex-row {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}
+
+/* Penyesuaian untuk layar sangat kecil (ponsel mini) agar teks tidak berantakan */
+@media (max-width: 480px) {
+    .sidebar-news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+    
+    .sidebar-news-item p.font-bold {
+        font-size: 11px !important;
+    }
+}
+
+/* ===============================
+   PASAL KUHP – MODERN UI
+================================ */
+
+/* Accordion animation */
+.pasal-content-box {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.45s ease, opacity 0.3s ease;
+}
+
+.pasal-content-box.active {
+    max-height: 3000px;
+    opacity: 1;
+}
+
+/* Status Dot */
+.status-dot-indicator {
+    width: 16px; /* Slightly larger dot */
+    height: 16px;
+    border-radius: 7000px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* Pasal Card */
+.pasal-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 28px; /* Rounder corners */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.pasal-card:hover {
+    border-color: #fecaca;
+    box-shadow: 0 20px 50px rgba(220, 38, 38, 0.1); /* Subtle red shadow on hover */
+    transform: translateY(-4px);
+}
+
+/* Header */
+.pasal-header {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 22px 30px !important; /* Reduced from 36px 40px */
+}
+
+@media (max-width: 768px) {
+    .pasal-header {
+        padding: 24px 20px !important;
+    }
+    
+    .pasal-card {
+        border-radius: 20px;
+        margin-bottom: 16px;
+    }
+}
+
+.pasal-header:hover {
+    background: #fffcfc;
+}
+
+.pasal-header .pasal-title-text {
+    font-size: 1.45rem; /* Reduced from 1.75rem */
+    font-weight: 850;
+    letter-spacing: -0.025em;
+    color: #111827;
+}
+
+@media (max-width: 768px) {
+    .pasal-header .pasal-title-text {
+        font-size: 1.25rem;
+    }
+    
+    .status-dot-indicator {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Status Badge */
+.status-badge {
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 9999px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .status-badge {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+}
+
+/* Filter Card */
+.filter-card {
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
+
+@media (max-width: 768px) {
+    .filter-card {
+        padding: 20px !important;
+        border-radius: 20px;
+    }
+}
+
+/* Buttons */
+.btn-primary {
+    background: #dc2626;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 18px;
+    font-weight: 800;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2);
+}
+
+@media (max-width: 768px) {
+    .btn-primary, .btn-secondary {
+        padding: 12px 24px;
+        font-size: 14px;
+        border-radius: 14px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.btn-primary:hover {
+    background: #b91c1c;
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(220, 38, 38, 0.3);
+}
+
+.btn-secondary {
+    background: #f9fafb;
+    color: #4b5563;
+    padding: 14px 32px;
+    border-radius: 18px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+/* Arrow */
+.arrow-rotate {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .pasal-content-box .px-10 {
+        padding-left: 1.25rem !important; /* px-5 */
+        padding-right: 1.25rem !important;
+    }
+    .pasal-content-box .pb-16 {
+        padding-bottom: 2.5rem !important; /* pb-10 */
+    }
+    .pasal-content-box .p-8 {
+        padding: 1.25rem !important; /* p-5 */
+    }
+    .pasal-content-box .mt-8 {
+        margin-top: 1.5rem !important;
+    }
+    .pasal-content-box .prose-lg {
+        font-size: 1rem !important;
+    }
+}
